@@ -11,6 +11,8 @@ public class AnnotationBasedApp {
 		
 		System.out.println(coach.getFortune());
 		
+		context.close();
+		
 	}
 
 }

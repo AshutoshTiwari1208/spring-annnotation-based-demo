@@ -1,8 +1,12 @@
 package com.inclined.demo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -25,8 +29,17 @@ public class TennisCoach implements Coach {
 
 	@Override
 	public String getFortune() {
-		return "Email is: "+ this.email + " " + this.fortune.getTodayFortune();
-		
+		return "Email is: "+ this.email + " " + this.fortune.getTodayFortune();	
+	}
+	
+	@PreDestroy
+	public void onEnd() {
+		System.out.println("Due to context.close() ----cleaning up now !");
+	}
+	
+	@PostConstruct
+	public void onStart() {
+		System.out.println("Hey ! Tennis is initialized completely");
 	}
 
 }
