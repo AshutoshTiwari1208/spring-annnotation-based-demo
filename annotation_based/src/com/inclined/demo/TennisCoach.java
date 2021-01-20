@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class TennisCoach implements Coach {
 	
-	@Autowired
-	@Qualifier("randomFortune")
+//	@Autowired
+//	@Qualifier("randomFortune")
 	private Fortune fortune;
 	
 	@Value("${foo.email}")
@@ -22,6 +22,11 @@ public class TennisCoach implements Coach {
 	@Value("${foo.name}")
 	private String name;
 	
+	public TennisCoach(Fortune happyFortune) {
+		// TODO Auto-generated constructor stub
+		this.fortune = happyFortune;
+	}
+
 	@Override
 	public String getTraining() {
 		return "Getting trained in Tennis";
@@ -41,5 +46,15 @@ public class TennisCoach implements Coach {
 	public void onStart() {
 		System.out.println("Hey ! Tennis is initialized completely");
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getName() {
+		return name;
+	}
+	
+	
 
 }

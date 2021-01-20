@@ -8,9 +8,11 @@ public class JavaBasedConfigApp {
 	public static void main(String[] args) {
 		
 		AnnotationConfigApplicationContext context  = new AnnotationConfigApplicationContext(SportConfig.class);
-		Coach coach = context.getBean("tennisCoach", Coach.class);
+		TennisCoach coach = (TennisCoach)context.getBean("tennisCoach", Coach.class);
 		System.out.println(coach.getTraining());
 		System.out.println(coach.getFortune());
+		System.out.println(coach.getEmail());
+		System.out.println(coach.getName());
 		
 	}
 
